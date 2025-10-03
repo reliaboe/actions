@@ -13,13 +13,23 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-        package_name: Aibel365.Auth.Core
+        package_name: Demo.Core
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run release-specific tasks
-        run: |
-          echo "A new release has been published!"
-          # Add your release-specific commands here, e.g.,
-          # build artifacts, deploy to a production environment, etc.
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release ${{env.package_name}} --no-restore
+
+      - name: Test
+        run: dotnet test --no-restore --verbosity quiet
+
+      - name: Package Nuget
+        run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=${{ github.event.release.tag_name }} ${{env.package_name}}
+
+      - name: Push
+        run: dotnet nuget push ${{env.package_name}}.${{ github.event.release.tag_name }}.nupkg --api-key ${{ secrets.PACKAGE_WRITE }} --source "github" --skip-duplicate
+
