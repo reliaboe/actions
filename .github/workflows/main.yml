@@ -16,7 +16,7 @@ jobs:
         package_name: Demo.Core
     defaults:
         run:
-          working-directory: ./app
+          working-directory: ./App
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
