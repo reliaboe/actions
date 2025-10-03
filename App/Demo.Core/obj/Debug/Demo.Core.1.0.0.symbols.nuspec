@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Demo.Core</id>
+    <version>1.0.0</version>
+    <authors>Demo.Core</authors>
+    <icon>icon.png</icon>
+    <readme>readme.md</readme>
+    <projectUrl>https://github.com/Aibel365/devops-azure-api</projectUrl>
+    <description>Package Description</description>
+    <repository type="git" url="https://github.com/Aibel365/devops-azure-api/pkgs/nuget/Aibel365.Azure.Http" commit="2a15010a37775d61ee2ddb527ae092bcc26fc8b7" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Aibelprogs\git\actions\App\Demo.Core\bin\Debug\net8.0\Demo.Core.pdb" target="lib\net8.0\Demo.Core.pdb" />
+    <file src="C:\Aibelprogs\git\actions\App\Demo.Core\bin\Debug\net8.0\Demo.Core.dll" target="lib\net8.0\Demo.Core.dll" />
+    <file src="C:\Aibelprogs\git\actions\App\Demo.Core\readme.md" target="readme.md" />
+    <file src="C:\Aibelprogs\git\actions\App\Demo.Core\icon.png" target="icon.png" />
+  </files>
+</package>
