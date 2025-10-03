@@ -4,9 +4,9 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<PackageProjectUrl>https://github.com/Aibel365/devops-azure-api</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/reliaboe/actions</PackageProjectUrl>
 		<PackageOutputPath>../lib/</PackageOutputPath>
-		<RepositoryUrl>https://github.com/Aibel365/devops-azure-api/pkgs/nuget/Aibel365.Azure.Http</RepositoryUrl>
+		<RepositoryUrl>https://github.com/reliaboe/actions</RepositoryUrl>
 		<Version>1.0.0</Version>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
