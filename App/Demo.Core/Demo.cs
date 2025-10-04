@@ -1,7 +1,11 @@
-﻿namespace Demo.Core
+namespace Demo.Core
 {
     public class Demo
     {
+        public Demo()
+        {
+
+        }
 
     }
 }
