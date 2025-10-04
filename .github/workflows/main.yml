@@ -41,16 +41,11 @@ jobs:
         with:
           scan-type: 'fs'
           ignore-unfixed: true
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+          format: 'table'
+          scan-ref: .
           severity: 'CRITICAL,HIGH'
           exit-code: 1
           skip-setup-trivy: true
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
 
       - name: Package Nuget
         run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=${{ github.event.release.tag_name }} ${{env.package_name}}
