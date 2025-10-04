@@ -30,6 +30,22 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity quiet
 
+      - name: Manual Trivy Setup
+        uses: aquasecurity/setup-trivy@v0.2.0
+        with:
+          cache: true
+          version: v0.65.0
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL'
+          skip-setup-trivy: true
+
       - name: Package Nuget
         run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=${{ github.event.release.tag_name }} ${{env.package_name}}
 
