@@ -51,7 +51,7 @@ jobs:
         run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=${{ github.event.release.tag_name }} ${{env.package_name}}
 
       - name: Package Source
-        run: dotnet nuget add source --username reliaboe --password ${{ secrets.PACKAGE_WRITE }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/reliaboe/index.json"
+        run: dotnet nuget add source --username reliaboe --password ${{ secrets.PACKAGE_WRITE }} --store-password-in-clear-text --name github ${{env.nuget_source}}
 
       - name: Push
         run: dotnet nuget push ${{env.package_name}}.${{ github.event.release.tag_name }}.nupkg --api-key ${{ secrets.PACKAGE_WRITE }} --source "github" --skip-duplicate
