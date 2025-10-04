@@ -1,0 +1,41 @@
+name: Workflow Build
+
+on:
+  push
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest        
+    defaults:
+        run:
+          working-directory: ./App
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test
+        run: dotnet test --no-restore --verbosity quiet
+
+      - name: Manual Trivy Setup
+        uses: aquasecurity/setup-trivy@v0.2.3
+        with:
+          cache: true
+          version: v0.65.0
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'table'
+          scan-ref: .
+          severity: 'CRITICAL,HIGH'
+          exit-code: 1
+          skip-setup-trivy: true
+
