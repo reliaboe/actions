@@ -31,7 +31,7 @@ jobs:
         run: dotnet test --no-restore --verbosity quiet
 
       - name: Manual Trivy Setup
-        uses: aquasecurity/setup-trivy@v0.2.0
+        uses: aquasecurity/setup-trivy@v0.2.3
         with:
           cache: true
           version: v0.65.0
@@ -43,7 +43,8 @@ jobs:
           ignore-unfixed: true
           format: 'sarif'
           output: 'trivy-results.sarif'
-          severity: 'CRITICAL'
+          severity: 'CRITICAL,HIGH'
+          exit-code: 1
           skip-setup-trivy: true
 
       - name: Package Nuget
